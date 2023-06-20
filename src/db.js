@@ -9,8 +9,15 @@ db.serialize(() => {
 
 	// tweets table
 	db.run(
-		'CREATE TABLE IF NOT EXISTS tweets (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id))',
+		'CREATE TABLE IF NOT EXISTS tweets (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL, user_id INTEGER, createdAt TEXT NOT NULL, FOREIGN KEY(user_id) REFERENCES users(id))',
 	);
+
+	// relationships table
+	db.run(
+		'CREATE TABLE IF NOT EXISTS relationships (id INTEGER PRIMARY KEY AUTOINCREMENT, follower_id INTEGER NOT NULL, followed_id INTEGER NOT NULL, FOREIGN KEY(follower_id) REFERENCES users(id), FOREIGN KEY(followed_id) REFERENCES users(id))'
+	)
+
 });
 
 module.exports = db;
+

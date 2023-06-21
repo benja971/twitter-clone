@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { createUser, getAllUsers, loginUser } = require('./services/users.service');
-const { createTweet, getFeed} = require('./services/tweets.service');
-const {createRelationship} = require('./services/relationships.service');
+const { createTweet, getFeed } = require('./services/tweets.service');
+const { createRelationship, getRelationshipsOfUser } = require('./services/relationships.service');
 
 const router = Router();
 
@@ -19,6 +19,9 @@ router.post('/users/:id/tweets', createTweet);
 
 // create a relationship
 router.get('/users/:id/follow/:followed_id', createRelationship);
+
+// get all relationships of a user
+router.get('/users/:id/relationships', getRelationshipsOfUser);
 
 // get the feed of a user
 router.get('/users/:id/feed', getFeed);

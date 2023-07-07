@@ -1,5 +1,7 @@
 # twitter-clone
 
+This project is a clone of twitter simplified to the extreme within the framework of a demonstration
+
 -   users
 -   tweets
 -   likes
